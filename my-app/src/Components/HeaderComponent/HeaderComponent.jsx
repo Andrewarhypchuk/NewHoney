@@ -20,10 +20,11 @@ const Header = () =>{
  const [buttonChangeLanguage,setButtonChangeLanguage] = useState('Change Language');
  const [language,setLanguage] = useState('English');
  const dispatch = useDispatch();
-    const userSettings = useSelector((state)=> state.usersSetting.value);
-    console.log(userSettings)
+    const userSettingsTheme = useSelector((state)=> state.usersSetting.value.theme);
+    const userSettingsName = useSelector((state)=> state.usersSetting.value.name);
+
     function  changeCurrentTheme(){
-          if(userSettings.theme === 'Light'){
+          if(userSettingsTheme === 'Light'){
               dispatch(changeTheme('Dark'))
           }else{
               dispatch(changeTheme('Light'))
@@ -41,7 +42,7 @@ const Header = () =>{
               setLanguage('English')
 
           }
-          if(selectedLanguage === 'Ukraine'){
+          if(selectedLanguage === 'Ukrainian'){
               setHeader('Магазин')
               setHyperLogin('Вхід')
               setHyperUsers('Користувачі')
@@ -53,10 +54,10 @@ const Header = () =>{
       }
 
 return(
-    <div className={userSettings.theme}>
-       <LogoComponent header={header} name={userSettings.name} />
+    <div className={userSettingsTheme}>
+       <LogoComponent header={header} name={userSettingsName} />
        <NavBarComponent login={HyperLogin} users={HyperUsers} products={HyperProducts} profile={HyperProfile} />
-       <ThemeSwitcher changeTheme={changeCurrentTheme} theme={userSettings.theme} />
+       <ThemeSwitcher changeTheme={changeCurrentTheme} theme={userSettingsTheme} />
        <LanguageSwitcher
            changeCurrentLanguage={changeCurrentLanguage}
            buttonLanguage={buttonChangeLanguage}
