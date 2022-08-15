@@ -1,9 +1,11 @@
 import React, {createRef, useEffect} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useDispatch, useSelector} from "react-redux";
-import {setName, toggleAdmin, toggleIsLogged} from "../../Redux/usersSetting-reducer";
+import {setFullName, setName, setPhone, toggleAdmin, toggleIsLogged} from "../../Redux/usersSetting-reducer";
 import {getUsers} from "../../Redux/users-reducer";
 import { useNavigate } from "react-router-dom";
+import IsAdminComponent from "./components/isAdminComponent";
+import TranslateComponent from './../TranslateComponent/TranslateComponent';
 
 
 
@@ -15,13 +17,20 @@ const LoginComponent = (props) =>{
     const toggleCurrentAdmin = ()=>{
         dispatch(toggleAdmin())
     }
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+      }
     const login = (users,name,password) =>{
         let loggingUser = users.filter((DataUser)=> {
             return  DataUser.username === name.trim() && DataUser.password === password.trim()
         })
         if(loggingUser.length !== 0){
+            dispatch(setFullName( capitalizeFirstLetter(loggingUser[0].name.firstname)+
+             ' ' + capitalizeFirstLetter(loggingUser[0].name.lastname)
+             ))
             dispatch(setName(name))
             dispatch(toggleIsLogged())
+            dispatch(setPhone(loggingUser[0].phone))
             passwordRef.current.value = '';
             nameRef.current.value = '';
             navigate('/profile')
@@ -35,20 +44,20 @@ const LoginComponent = (props) =>{
         dispatch(getUsers())
 
     },[])
-    const userSettings = useSelector((state)=> state.usersSetting.value);
+    
     const users = useSelector((state)=>state.users)
 
-    console.log(userSettings)
     return(
         <div className='d-flex flex-column align-items-center'>
-            <div>Is admin: {userSettings.isAdmin.toString()}</div>
+            <IsAdminComponent />
+            
             <div className="mb-3 col-4 fs-3">
-                <label htmlFor="exampleFormControlInput1" className="form-label">Email address</label>
+                <label htmlFor="exampleFormControlInput1" className="form-label"><TranslateComponent str='User name' /></label>
                 <input ref={nameRef} type="text" className="form-control fs-3" id="exampleFormControlInput1"
                        placeholder="email..." />
             </div>
             <div className="mb-3 col-4 fs-3">
-                <label htmlFor="exampleFormControlInput1" className="form-label">Password</label>
+                <label htmlFor="exampleFormControlInput1" className="form-label"><TranslateComponent str='Password' /></label>
                 <input ref={passwordRef} type="password" className="form-control fs-3" id="exampleFormControlInput1"
                        placeholder="password..."/>
             </div>
