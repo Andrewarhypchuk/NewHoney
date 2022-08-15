@@ -5,9 +5,12 @@ import {createSlice} from '@reduxjs/toolkit'
       initialState: { value:{
           isLogged:false,
           isAdmin:false,
+          id:'',
           name:'You have to login',
+          fullName:'',
           password:'',
           theme:'Light',
+          phone:'',
           language:'English'} },
       reducers: {
           changeTheme : (state,action)=>{
@@ -24,9 +27,18 @@ import {createSlice} from '@reduxjs/toolkit'
           },
           setName :(state,action)=>{
              state.value.name = action.payload
-           }
+           },
+           setFullName :(state,action)=>{
+            state.value.fullName = action.payload
+          },
+          setPhone :(state,action)=>{
+            state.value.phone = action.payload
+          },
+          setId:(state,action)=>{
+            state.value.id = action.payload
+          }
       }
   })
 
-export const { changeTheme,toggleAdmin,changeLanguage,setName,toggleIsLogged }  = UserSettingsSlice.actions;
+export const { changeTheme,toggleAdmin,changeLanguage,setName,toggleIsLogged,setFullName,setPhone,setId }  = UserSettingsSlice.actions;
 export default UserSettingsSlice.reducer;
