@@ -10,7 +10,7 @@ const LanguageSwitcher = (props) =>{
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                    <Dropdown.Item  onClick={()=>props.changeCurrentLanguage('Ukraine')}  href="#/action-1">Ukraine</Dropdown.Item>
+                    <Dropdown.Item  onClick={()=>props.changeCurrentLanguage('Ukrainian')}  href="#/action-1">Ukraine</Dropdown.Item>
                     <Dropdown.Item onClick={()=>props.changeCurrentLanguage('English')} href="#/action-2">English</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
