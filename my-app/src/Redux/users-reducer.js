@@ -1,8 +1,9 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import axios from "axios";
+import { useSelector } from 'react-redux';
 
-export const getUsers = createAsyncThunk(
-    'users/getUsers',
+export const setUsers = createAsyncThunk(
+    'users/setUsers',
     async (dispatch,getState)=>{
         return await axios.get('https://fakestoreapi.com/users').then(
             (response) => response.data
@@ -18,19 +19,22 @@ export const UsersSlice = createSlice({
         status:null
     },
     extraReducers: {
-        [getUsers.pending]: (state, action) => {
+        [setUsers.pending]: (state, action) => {
             state.status = 'loading'
         },
-        [getUsers.fulfilled]: (state, action) => {
+        [setUsers.fulfilled]: (state, action) => {
             state.status = 'success'
             state.users = action.payload
         },
-        [getUsers.rejected]: (state, action) => {
+        [setUsers.rejected]: (state, action) => {
             state.status = 'failed'
         }
 
     }
 })
-
+export const Users = ()=> {
+   let users  = useSelector((state)=>state.users);
+   return Users
+} 
 
 export default UsersSlice.reducer;
