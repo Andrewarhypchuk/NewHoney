@@ -1,7 +1,9 @@
-import React from "react";
-import {setFullName, setName, setPhone,toggleIsLogged} from "../../Redux/usersSetting-reducer";
-import { Users } from './../../Redux/users-reducer';
+import React, { useRef } from "react";
+import {setFullName, setName, setPhone,toggleIsLogged,toggleAdmin} from "../../../Redux/usersSetting-reducer";
+import { Users } from '../../../Redux/users-reducer';
 import {useDispatch} from "react-redux";
+import { useNavigate } from "react-router-dom";
+import TranslateComponent from "../../TranslateComponent/TranslateComponent";
 
 const InputsComponent = ()=>{
     function capitalizeFirstLetter(string) {
@@ -10,8 +12,8 @@ const InputsComponent = ()=>{
       const toggleCurrentAdmin = ()=>{
           dispatch(toggleAdmin())
       }
-    const passwordRef = createRef();
-    const nameRef = createRef();
+    const passwordRef = useRef();
+    const nameRef = useRef();
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const logIn = (users,name,password) =>{
@@ -41,6 +43,7 @@ const InputsComponent = ()=>{
                 <label htmlFor="exampleFormControlInput1" className="form-label"><TranslateComponent str='User name' /></label>
                 <input ref={nameRef} type="text" className="form-control fs-3" id="exampleFormControlInput1"
                        placeholder="email..." />
+                
             </div>
             <div className="mb-3 col-4 fs-3">
                 <label htmlFor="exampleFormControlInput1" className="form-label"><TranslateComponent str='Password' /></label>
