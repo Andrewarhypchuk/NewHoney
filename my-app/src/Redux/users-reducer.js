@@ -1,6 +1,5 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
+import {createAsyncThunk,createSlice} from '@reduxjs/toolkit'
 import axios from "axios";
-import { useSelector } from 'react-redux';
 
 export const setUsers = createAsyncThunk(
     'users/setUsers',
@@ -32,9 +31,7 @@ export const UsersSlice = createSlice({
 
     }
 })
-export const Users = ()=> {
-   let users  = useSelector((state)=>state.users);
-   return Users
-} 
+
+export const  selectUsers = (state)=>state.users;
 
 export default UsersSlice.reducer;

@@ -3,14 +3,14 @@ import {Route, Routes} from "react-router-dom";
 // import ProfileComponent from "../ProfileComponent/ProfileComponent";
 import {useSelector} from "react-redux";
 import LoginComponent from "../LoginComponent/LoginComponent";
-
+import {selectTheme} from "../../Redux/usersSetting-reducer";
 // import Users from "../UsersComponent/UsersComponent";
 
 
 const Main = ()=>{
-    const userSettingsTheme = useSelector((state)=> state.usersSetting.value.theme);
+    const theme = useSelector(selectTheme);
     return(
-        <div className={`${userSettingsTheme}main`} >
+        <div className={`${theme}main`} >
         <Routes>
             <Route path="/" element={<LoginComponent />} />
             {/* <Route path="/profile" element={<ProfileComponent />} /> */}

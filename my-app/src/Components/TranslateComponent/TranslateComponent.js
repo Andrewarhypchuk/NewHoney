@@ -8,7 +8,7 @@ translate.key = process.env.GOOGLE_KEY
 
 const TranslateComponent = ({str}) => {
   const [text, setText] = useState(str);
-  const languageSelector = useSelector((state)=> state.usersSetting.value.language);
+  const languageSelector = useSelector((state)=> state.usersSetting.language);
 
   useEffect(() => {
     const TranslateText = async () => {

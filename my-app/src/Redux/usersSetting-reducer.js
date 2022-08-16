@@ -2,7 +2,7 @@ import {createSlice} from '@reduxjs/toolkit'
 
  export const UserSettingsSlice = createSlice({
       name: 'userSettings',
-      initialState: { value:{
+      initialState: { 
           isLogged:false,
           isAdmin:false,
           name:'You have to login',
@@ -10,31 +10,36 @@ import {createSlice} from '@reduxjs/toolkit'
           password:'',
           theme:'Light',
           language:'English',
-          phone:''} },
+          phone:''},
       reducers: {
           changeTheme : (state,action)=>{
-              state.value.theme = action.payload
+              state.theme = action.payload
           },
           changeLanguage : (state,action)=>{
-              state.value.language = action.payload
+              state.language = action.payload
           },
           toggleAdmin :(state,action)=>{
-              state.value.isAdmin = !state.value.isAdmin
+              state.isAdmin = !state.isAdmin
           },
           toggleIsLogged :(state,action)=>{
-              state.value.isLogged = !state.value.isLogged
+              state.isLogged = !state.isLogged
           },
           setName :(state,action)=>{
-             state.value.name = action.payload
+             state.name = action.payload
            },
            setPhone :(state,action)=>{
-            state.value.phone = action.payload
+            state.phone = action.payload
           },
           setFullName :(state,action)=>{
-            state.value.fullName = action.payload
+            state.fullName = action.payload
           }
       }
   })
+
+  export const  selectTheme = (state)=>state.usersSetting.theme;
+  export const  selectName = (state)=>state.usersSetting.name;
+  export const  selectAdmin = (state)=>state.usersSetting.isAdmin;
+  export const  selectLogged = (state)=>state.usersSetting.isLogged;
 
 export const { changeTheme,toggleAdmin,changeLanguage,setName,toggleIsLogged,setPhone,setFullName }  = UserSettingsSlice.actions;
 export default UserSettingsSlice.reducer;

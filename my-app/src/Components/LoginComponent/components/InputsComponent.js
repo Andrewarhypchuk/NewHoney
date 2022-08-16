@@ -1,11 +1,13 @@
-import React, { useRef } from "react";
+import React, { useRef} from "react";
 import {setFullName, setName, setPhone,toggleIsLogged,toggleAdmin} from "../../../Redux/usersSetting-reducer";
-import { Users } from '../../../Redux/users-reducer';
-import {useDispatch} from "react-redux";
+import { selectUsers} from '../../../Redux/users-reducer';
+import {useDispatch,useSelector} from "react-redux";
 import { useNavigate } from "react-router-dom";
 import TranslateComponent from "../../TranslateComponent/TranslateComponent";
 
 const InputsComponent = ()=>{
+     const users = useSelector(selectUsers)
+     console.log(users)
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
       }
@@ -16,8 +18,9 @@ const InputsComponent = ()=>{
     const nameRef = useRef();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const logIn = (users,name,password) =>{
-        let loggingUser = users.filter((DataUser)=> {
+    const logIn = (name,password) =>{
+ 
+        let loggingUser = users.users.filter((DataUser)=> {
             return  DataUser.username === name.trim() && DataUser.password === password.trim()
         })
         if(loggingUser.length !== 0){
@@ -54,10 +57,10 @@ const InputsComponent = ()=>{
             <div className="form-check">
                 <input onChange={toggleCurrentAdmin} className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
                     <label className="form-check-label" htmlFor="flexCheckDefault">
-                        I am admin
+                        <TranslateComponent  str='I am admin' />
                     </label>
             </div>
-            <button onClick={()=>{logIn(Users.users,nameRef.current.value,passwordRef.current.value)}} type="button" className="btn btn-success">Log in</button>
+            <button onClick={()=>{logIn(nameRef.current.value,passwordRef.current.value)}} type="button" className="btn btn-success">Log in</button>
     </>
 )
 

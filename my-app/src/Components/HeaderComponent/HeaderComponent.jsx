@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Dropdown from 'react-bootstrap/Dropdown';
 import LogoComponent from "./Components/LogoComponent";
 import NavBarComponent from "./Components/NavBarComponent";
 import { useDispatch} from "react-redux";
 import {useSelector} from "react-redux";
-import {changeLanguage, changeTheme} from "../../Redux/usersSetting-reducer";
+import {changeLanguage, changeTheme, selectName,selectTheme} from "../../Redux/usersSetting-reducer";
 import ThemeSwitcher from "./Components/ThemeSwitcherComponent";
 import LanguageSwitcher from "./Components/LanguageSwitcher";
 
@@ -20,10 +19,11 @@ const Header = () =>{
  const [buttonChangeLanguage,setButtonChangeLanguage] = useState('Change Language');
  const [language,setLanguage] = useState('English');
  const dispatch = useDispatch();
-    const userSettings = useSelector((state)=> state.usersSetting.value);
-    console.log(userSettings)
+    const theme = useSelector(selectTheme);
+    const name = useSelector(selectName)
+    
     function  changeCurrentTheme(){
-          if(userSettings.theme === 'Light'){
+          if(theme === 'Light'){
               dispatch(changeTheme('Dark'))
           }else{
               dispatch(changeTheme('Light'))
@@ -41,7 +41,7 @@ const Header = () =>{
               setLanguage('English')
 
           }
-          if(selectedLanguage === 'Ukraine'){
+          if(selectedLanguage === 'Ukrainian'){
               setHeader('Магазин')
               setHyperLogin('Вхід')
               setHyperUsers('Користувачі')
@@ -53,10 +53,10 @@ const Header = () =>{
       }
 
 return(
-    <div className={userSettings.theme}>
-       <LogoComponent header={header} name={userSettings.name} />
+    <div className={theme}>
+       <LogoComponent header={header} name={name} />
        <NavBarComponent login={HyperLogin} users={HyperUsers} products={HyperProducts} profile={HyperProfile} />
-       <ThemeSwitcher changeTheme={changeCurrentTheme} theme={userSettings.theme} />
+       <ThemeSwitcher changeTheme={changeCurrentTheme} theme={theme} />
        <LanguageSwitcher
            changeCurrentLanguage={changeCurrentLanguage}
            buttonLanguage={buttonChangeLanguage}
