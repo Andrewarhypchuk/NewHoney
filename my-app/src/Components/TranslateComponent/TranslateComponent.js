@@ -1,25 +1,24 @@
-import React from 'react';
-import { useEffect, useState } from 'react'
-import translate from 'translate';
-import {useSelector} from "react-redux";
+import React from "react";
+import { useEffect, useState } from "react";
+import translate from "translate";
+import { useSelector } from "react-redux";
 
-translate.engine = 'google'
-translate.key = process.env.GOOGLE_KEY
+translate.engine = "google";
+translate.key = process.env.GOOGLE_KEY;
 
-const TranslateComponent = ({str}) => {
+const TranslateComponent = ({ str }) => {
   const [text, setText] = useState(str);
-  const languageSelector = useSelector((state)=> state.usersSetting.language);
+  const languageSelector = useSelector((state) => state.userSettings.language);
 
   useEffect(() => {
     const TranslateText = async () => {
-      const res = await translate(str, languageSelector)
-      setText(res)
-    }
-    TranslateText()
- 
-  }, [languageSelector, str])
+      const res = await translate(str, languageSelector);
+      setText(res);
+    };
+    TranslateText();
+  }, [languageSelector, str]);
 
-  return <>{text}</>
-}
+  return <>{text}</>;
+};
 
-export default TranslateComponent
+export default TranslateComponent;

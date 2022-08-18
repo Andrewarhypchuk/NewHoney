@@ -1,13 +1,13 @@
-import { configureStore } from '@reduxjs/toolkit';
-import userSettingsReducer from "./usersSetting-reducer";
+import { configureStore } from "@reduxjs/toolkit";
+import userSettingsReducer from "./userSettings-reducer";
 import usersReducer from "./users-reducer";
+import userDataReducer from "./userData-reducer";
 
 const store = configureStore({
-        reducer: {
-                usersSetting:userSettingsReducer,
-                users: usersReducer
-        },
-})
-
-window.store = store;
+  reducer: {
+    userSettings: userSettingsReducer,
+    userData:userDataReducer,
+    users: usersReducer,
+  },
+});
 export default store;

@@ -1,15 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { selectTheme } from "../../Redux/userSettings-reducer";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {useSelector} from "react-redux";
+const Footer = () => {
 
-const Footer = () =>{
+    const theme = useSelector(selectTheme);
 
-    const userSettings = useSelector((state)=> state.usersSetting);
-return(
-    <footer className={`${userSettings.theme}footer`} >
-
-    </footer>
-)
-}
+  return <footer className={`${theme}footer`}></footer>;
+};
 export default Footer;
