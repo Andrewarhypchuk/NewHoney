@@ -3,9 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 export const UserDataSlice = createSlice({
   name: "userData",
   initialState: {
-    name: null,
-    fullName: null,
-    password: null,
+    name: '',
+    fullName: '',
+    password: '',
   },
   reducers: {
     setName: (state, action) => {

@@ -3,6 +3,7 @@ import TranslateComponent from "./../../TranslateComponent/TranslateComponent";
 import { useSelector } from "react-redux";
 import { selectName } from "../../../Redux/userData-reducer";
 import { selectLogged } from "../../../Redux/userSettings-reducer";
+import { capitalizeFirstLetter } from './../../../Utiles/capitalizeFirstLetter';
 
 
 
@@ -14,7 +15,7 @@ const LogoComponent = () => {
       <div className="headerName">
         <TranslateComponent str="Store" />
       </div>
-      <div className="userName">{isUserLogged ? name : null}</div>
+      <div className="userName">{isUserLogged ? capitalizeFirstLetter(name) : null}</div>
     </div>
   );
 };
