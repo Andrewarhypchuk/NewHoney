@@ -1,10 +1,11 @@
 import React from "react";
-import TranslateComponent from "../../TranslateComponent/TranslateComponent";
 import { useDispatch } from "react-redux";
-import { toggleAdmin } from "../../../Redux/userSettings-reducer";
 
+import TranslateComponent from "../../TranslateComponent/TranslateComponent";
+import { toggleAdmin } from "../../../Redux/userSettings-reducer";
 const ToggleAdminComponent = () => {
   const dispatch = useDispatch();
+  
   return (
     <div className="form-check">
       <input
@@ -19,4 +20,5 @@ const ToggleAdminComponent = () => {
     </div>
   );
 };
+
 export default ToggleAdminComponent;

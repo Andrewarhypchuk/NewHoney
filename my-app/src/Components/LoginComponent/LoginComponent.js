@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setUsers } from "../../Redux/users-reducer";
+
 import ShowAdminStatus from "./components/ShowAdminStatusComponent";
 import LogInButton from './components/LogInButtonComponent';
 import ToggleAdminComponent from "./components/ToggleAdminComponent";
 import InputName from "./components/InputName";
 import InputPassword from "./components/InputPassword";
+import { setUsers } from "../../Redux/users-reducer";
 
 const LoginComponent = () => {
   const dispatch = useDispatch();
@@ -23,4 +24,5 @@ const LoginComponent = () => {
     </div>
   );
 };
+
 export default LoginComponent;

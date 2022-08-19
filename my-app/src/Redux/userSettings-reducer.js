@@ -1,13 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { EN, LIGHT } from './../Utiles/consts';
-
+import { EN, LIGHT } from "./../Utiles/consts";
 export const UserSettingsSlice = createSlice({
   name: "userSettings",
   initialState: {
     isLogged: false,
     isAdmin: false,
     theme: LIGHT,
-    language: EN
+    language: EN,
   },
   reducers: {
     changeTheme: (state, action) => {
@@ -21,7 +20,7 @@ export const UserSettingsSlice = createSlice({
     },
     toggleIsLogged: (state, action) => {
       state.isLogged = !state.isLogged;
-    }
+    },
   },
 });
 
@@ -30,10 +29,6 @@ export const selectAdmin = (state) => state.userSettings.isAdmin;
 export const selectLogged = (state) => state.userSettings.isLogged;
 export const selectLanguage = (state) => state.userSettings.language;
 
-export const {
-  changeTheme,
-  toggleAdmin,
-  changeLanguage,
-  toggleIsLogged,
-} = UserSettingsSlice.actions;
+export const { changeTheme, toggleAdmin, changeLanguage, toggleIsLogged } =
+  UserSettingsSlice.actions;
 export default UserSettingsSlice.reducer;

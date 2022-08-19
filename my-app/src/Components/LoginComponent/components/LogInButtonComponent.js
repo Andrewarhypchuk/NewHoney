@@ -1,34 +1,38 @@
 import React from "react";
-import TranslateComponent from "../../TranslateComponent/TranslateComponent";
-import { useSelector } from "react-redux";
-import { selectName } from "../../../Redux/userData-reducer";
-import { selectPassword } from "./../../../Redux/userData-reducer";
-import { selectUsers } from "./../../../Redux/users-reducer";
-import { useDispatch } from "react-redux";
-import { toggleIsLogged } from "../../../Redux/userSettings-reducer";
+import { useSelector,useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+import TranslateComponent from "../../TranslateComponent/TranslateComponent";
+import { selectName ,selectPassword} from "../../../Redux/userData-reducer";
+import { selectUsers } from "./../../../Redux/users-reducer";
+import { toggleIsLogged } from "../../../Redux/userSettings-reducer";
+
 const LogInButton = () => {
-  let navigate = useNavigate();
-  let name = useSelector(selectName);
-  let password = useSelector(selectPassword);
-  let userList = useSelector(selectUsers).users;
-  let dispatch = useDispatch();
-  
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const name = useSelector(selectName);
+  const password = useSelector(selectPassword);
+  const userList = useSelector(selectUsers).users;
+
   function logIn() {
-    let LogUser = userList.filter((user) => {
-      return user.username === name.trim() && user.password === password.trim();
-    });
-    if (LogUser.length !== 0) {
-      navigate('/profile')
-      dispatch(toggleIsLogged());
-    }
+    const logUser = userList.filter((user) => {
+        return (
+          user.username === name.trim() && user.password === password.trim()
+        );
+      });
+
+      if (logUser.length !== 0) {
+        navigate("/profile");
+        dispatch(toggleIsLogged());
+      }
   }
 
   return (
-    <button onClick={() => logIn()} type="button" className="btn btn-success">
+    <button onClick={logIn} type="button" className="btn btn-success">
       <TranslateComponent str="Log In" />
     </button>
   );
 };
+
 export default LogInButton;

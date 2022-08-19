@@ -1,18 +1,18 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+
 import Dropdown from "react-bootstrap/Dropdown";
+import TranslateComponent from "./../../TranslateComponent/TranslateComponent";
 import {
   changeLanguage,
   selectLanguage,
 } from "../../../Redux/userSettings-reducer";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import TranslateComponent from "./../../TranslateComponent/TranslateComponent";
-import { UK } from "../../../Utiles/consts";
-import { EN } from "./../../../Utiles/consts";
+import { UK, EN } from "../../../Utiles/consts";
 
 const LanguageSwitcher = () => {
-  const language = useSelector(selectLanguage);
   const dispatch = useDispatch();
+  const language = useSelector(selectLanguage);
+  
   return (
     <div className="d-flex flex-column-reverse">
       <Dropdown>
@@ -41,4 +41,5 @@ const LanguageSwitcher = () => {
     </div>
   );
 };
+
 export default LanguageSwitcher;

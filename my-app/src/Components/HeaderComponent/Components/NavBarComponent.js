@@ -1,8 +1,10 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
+
 import TranslateComponent from './../../TranslateComponent/TranslateComponent';
 
-const NavBarComponent = (props) =>{
+const NavBarComponent = () =>{
+    
     return(
         <div>
             <NavLink to={'profile'}><TranslateComponent str='Profile'/></NavLink>
@@ -12,4 +14,5 @@ const NavBarComponent = (props) =>{
         </div>
     )
 }
-export default NavBarComponent
+
+export default NavBarComponent;

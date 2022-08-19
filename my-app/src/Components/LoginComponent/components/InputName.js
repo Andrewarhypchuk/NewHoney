@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch} from "react-redux";
+
 import TranslateComponent from "../../TranslateComponent/TranslateComponent";
-import { useSelector } from "react-redux";
-import {
-  selectName,
-  setName,
-  setPassword,
-} from "../../../Redux/userData-reducer";
-import { useDispatch } from "react-redux";
+import {setName } from "../../../Redux/userData-reducer";
 
 const InputName = () => {
-  let name = useSelector(selectName);
   const dispatch = useDispatch();
+
+  const [localName, setLocalName] = useState("");
+  const handleBlur = () => {
+    dispatch(setName(localName));
+  };
+  const handleChange = (e) => {
+    setLocalName(e.target.value);
+  };
+
   return (
     <>
       <label htmlFor="exampleFormControlInput1" className="form-label">
@@ -18,13 +22,16 @@ const InputName = () => {
         <input
           type="text"
           className="form-control fs-3"
-          value={name}
-          onChange={(e) => {
-            dispatch(setName(e.target.value));
-          }}
+          value={localName}
+          onBlur={handleBlur}
+          onChange={(e) => handleChange(e)}
+          onKeyPress={event => {
+            event.key === 'Enter' && handleBlur();
+        }}
         />
       </label>
     </>
   );
 };
+
 export default InputName;

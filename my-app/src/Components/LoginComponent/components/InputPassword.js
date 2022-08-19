@@ -1,13 +1,20 @@
-import React from "react";
-import TranslateComponent from "../../TranslateComponent/TranslateComponent";
-import { useSelector } from "react-redux";
-import { setPassword } from "../../../Redux/userData-reducer";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { selectPassword } from "./../../../Redux/userData-reducer";
 
+import TranslateComponent from "../../TranslateComponent/TranslateComponent";
+import { setPassword } from "../../../Redux/userData-reducer";
 const InputPassword = () => {
-  let password = useSelector(selectPassword);
   const dispatch = useDispatch();
+
+  const [localPassword, setLocalPassword] = useState("");
+
+  const handleBlur = () => {
+    dispatch(setPassword(localPassword));
+  };
+  const handleChange = (e) => {
+    setLocalPassword(e.target.value);
+  };
+
   return (
     <>
       <label htmlFor="exampleFormControlInput1" className="form-label">
@@ -15,11 +22,16 @@ const InputPassword = () => {
         <input
           type="password"
           className="form-control fs-3"
-          value={password}
-          onChange={(e) => dispatch(setPassword(e.target.value))}
+          value={localPassword}
+          onChange={(e) => handleChange(e)}
+          onBlur={handleBlur}
+          onKeyPress={(event) => {
+            event.key === "Enter" && handleBlur();
+          }}
         />
       </label>
     </>
   );
 };
+
 export default InputPassword;

@@ -1,19 +1,18 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { changeTheme, selectTheme } from "../../../Redux/userSettings-reducer";
+import { useSelector, useDispatch } from "react-redux";
+
 import TranslateComponent from "./../../TranslateComponent/TranslateComponent";
+import { changeTheme, selectTheme } from "../../../Redux/userSettings-reducer";
 import { DARK, LIGHT } from "./../../../Utiles/consts";
 const ThemeSwitcher = () => {
   const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
+
   function changeCurrentTheme() {
-    if (theme === LIGHT) {
-      dispatch(changeTheme(DARK));
-    } else {
-      dispatch(changeTheme(LIGHT));
-    }
+    const newTheme = theme === LIGHT ? DARK : LIGHT;
+    dispatch(changeTheme(newTheme));
   }
+
   return (
     <div className="form-check form-switch">
       <input
@@ -32,4 +31,5 @@ const ThemeSwitcher = () => {
     </div>
   );
 };
+
 export default ThemeSwitcher;
