@@ -12,11 +12,11 @@ const TranslateComponent = ({ str }) => {
   const languageSelector = useSelector(selectLanguage);
 
   useEffect(() => {
-    const TranslateText = async () => {
+    const translateText = async () => {
       const res = await translate(str, languageSelector);
       setText(res);
     };
-    TranslateText();
+    translateText();
   }, [languageSelector, str]);
 
   return <>{text}</>;
