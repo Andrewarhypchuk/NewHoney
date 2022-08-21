@@ -1,38 +1,97 @@
 .App {
-  text-align: center;
+    margin:0 auto;
+    width:1350px;
+    height:1500px;
+    border:1px solid black;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+ .Lightmain{
+
+     background-color: #d9d2d2;
+     color: #125fa4;
+     height:1200px;
+     font-size: 50px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+ .Darkmain{
+    background-color: #125fa4;
+     color: #d9d2d2;
+     height:1200px;
+     font-size: 50px;
+}
+.header{
+    height:150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 15px 0px 15px;
+    font-size: calc(10px + 2vmin);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.Light{
+    height:150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 15px 0px 15px;
+    font-size: calc(10px + 2vmin);
+    background-color: #adb9c7;
 }
-
-.App-link {
-  color: #61dafb;
+.Dark{
+    height:150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 15px 0px 15px;
+    font-size: calc(10px + 2vmin);
+    background-color: #0e3c64;
 }
+.Light .headerName{
+    font-size: 56px;
+    color: #132d48;
+}
+.Dark .headerName{
+    font-size: 56px;
+    color: #dfcfcf;
+}
+.Dark .userName{
+    color: #dfcfcf;
+}
+.Light .userName{
+    color:#0e3c64;
+}
+.Dark .themeName{
+    color: #dfcfcf;
+}
+.Light .themeName{
+    color:#0e3c64;
+}
+.Dark .languageName{
+    color: #dfcfcf;
+}
+.Light .languageName{
+    color:#0e3c64;
+}
+.Light  a{
+    color:#0e3c64;
+    text-decoration: none;
+    margin-right: 40px;
+}
+.Dark  a{
+    color: #dfcfcf;
+    text-decoration: none;
+    margin-right: 40px;
+}
+.Darkfooter{
+    background-color: #0e3c64;
+    height:150px;
+    width:100%;
+}
+.Lightfooter{
+    background-color: #adb9c7;
+    height:150px;
+    width:100%;
+}
+#dropdown-basic{
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
