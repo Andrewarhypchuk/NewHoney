@@ -4,7 +4,6 @@ export const UserDataSlice = createSlice({
   name: "userData",
   initialState: {
     name: '',
-    fullName: '',
     password: '',
   },
   reducers: {
@@ -13,10 +12,7 @@ export const UserDataSlice = createSlice({
     },
     setPassword: (state, action) => {
       state.password = action.payload;
-    },
-    setFullName: (state, action) => {
-      state.fullName = action.payload;
-    },
+    }
   },
 });
 

@@ -2,22 +2,27 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-// import ProfileComponent from "../ProfileComponent/ProfileComponent";
+
 import LoginComponent from "../LoginComponent/LoginComponent";
+import ProfileComponent from './../ProfileComponent/ProfileComponent';
 import { selectTheme } from "../../Redux/userSettings-reducer";
+import LogOut from "../LogOutComponent/LogOut";
 // import Users from "../UsersComponent/UsersComponent";
+import TranslateComponent from './../TranslateComponent/TranslateComponent';
+
 
 const Main = () => {
   const theme = useSelector(selectTheme);
   return (
-    <div className={`${theme}main`}>
+    <div className={`${theme}main d-flex justify-content-center align-items-start`}>
       <Routes>
         <Route path="/" element={<LoginComponent />} />
-        {/* <Route path="/profile" element={<ProfileComponent />} /> */}
+        <Route path="/profile" element={<ProfileComponent />} />
         <Route path="/login" element={<LoginComponent />} />
         {/* <Route path="/users" element={<Users />} /> */}
         <Route path="/products" element={<div>Products</div>} />
-        <Route path="*" element={<div>Page does not exist</div>} />
+        <Route path="/logout" element={<LogOut />} /> 
+        <Route path="*" element={<TranslateComponent str='Page does not exist'/>} />
       </Routes>
     </div>
   );
