@@ -7,6 +7,7 @@ import { capitalizeFirstLetter } from "./../../../Utiles/capitalizeFirstLetter";
 
 const User = () => {
   const name = capitalizeFirstLetter(useSelector(selectName));
+
   return (
     <div className="d-flex flex-column align-items-center">
       <div>
@@ -18,4 +19,5 @@ const User = () => {
     </div>
   );
 };
+
 export default User;

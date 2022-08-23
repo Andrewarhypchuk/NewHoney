@@ -3,17 +3,15 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import TranslateComponent from "../TranslateComponent/TranslateComponent";
-import { changeAdmin, toggleIsLogged } from "../../Redux/userSettings-reducer";
-import { setName, setPassword } from "../../Redux/userData-reducer";
+import { resetUserSettings } from "../../Redux/userSettings-reducer";
+import { resetUserData } from "../../Redux/userData-reducer";
 
 const LogOut = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   function logUserOut() {
-    dispatch(toggleIsLogged());
-    dispatch(changeAdmin(false));
-    dispatch(setName(""));
-    dispatch(setPassword(""));
+    dispatch(resetUserSettings());
+    dispatch(resetUserData());
     navigate("/login");
   }
 

@@ -10,13 +10,10 @@ const Profile = () => {
   const isAdmin = useSelector(selectAdmin);
   const isLogged = useSelector(selectLogged);
 
-  return isAdmin ? (
-    <Admin />
-  ) : isLogged ? (
-    <User />
-  ) : (
-    <TranslateComponent str="Sorry , you are not logged" />
-  );
+   if(isAdmin)return <Admin />
+   if(isLogged)return <User />
+   
+   return <TranslateComponent str="Sorry , you are not logged" /> 
 };
 
 export default Profile;

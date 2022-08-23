@@ -18,12 +18,13 @@ export const UserSettingsSlice = createSlice({
     toggleAdmin: (state, action) => {
      state.isAdmin = !state.isAdmin;
     },
-    changeAdmin: (state, action) => {
-      state.isAdmin = action.payload;
-     },
     toggleIsLogged: (state, action) => {
       state.isLogged = !state.isLogged;
     },
+    resetUserSettings :(state,action) =>{
+      state.isLogged = false;
+      state.isAdmin = false
+    }
   },
 });
 
@@ -32,6 +33,6 @@ export const selectAdmin = (state) => state.userSettings.isAdmin;
 export const selectLogged = (state) => state.userSettings.isLogged;
 export const selectLanguage = (state) => state.userSettings.language;
 
-export const { changeTheme, toggleAdmin,changeAdmin, changeLanguage, toggleIsLogged } =
+export const { changeTheme, toggleAdmin,changeAdmin, changeLanguage, toggleIsLogged ,resetUserSettings } =
   UserSettingsSlice.actions;
 export default UserSettingsSlice.reducer;
