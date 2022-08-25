@@ -7,7 +7,7 @@ import LoginComponent from "../LoginComponent/LoginComponent";
 import ProfileComponent from './../ProfileComponent/ProfileComponent';
 import { selectTheme } from "../../Redux/userSettings-reducer";
 import LogOut from "../LogOutComponent/LogOut";
-// import Users from "../UsersComponent/UsersComponent";
+import Users from "../UsersComponent/UsersComponent";
 import TranslateComponent from './../TranslateComponent/TranslateComponent';
 
 
@@ -19,7 +19,7 @@ const Main = () => {
         <Route path="/" element={<LoginComponent />} />
         <Route path="/profile" element={<ProfileComponent />} />
         <Route path="/login" element={<LoginComponent />} />
-        {/* <Route path="/users" element={<Users />} /> */}
+        <Route path="/users" element={<Users />} />
         <Route path="/products" element={<div>Products</div>} />
         <Route path="/logout" element={<LogOut />} /> 
         <Route path="*" element={<TranslateComponent str='Page does not exist'/>} />
