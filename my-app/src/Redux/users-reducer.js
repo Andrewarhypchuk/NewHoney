@@ -14,7 +14,26 @@ export const UsersSlice = createSlice({
   name: "users",
   initialState: {
     users: [],
-    status: null,
+    status: null
+  },
+  reducers: {
+    editUser: (state, action) => {
+      let newUsersMassive = state.users.map((user) => {
+        if (user.id === action.payload.id) {
+          user = action.payload;
+        }
+        return user;
+      });
+      state.users = newUsersMassive;
+    },
+    deleteUser: (state, action) => {
+      console.log(action.payload);
+      state.users = state.users.filter((user) => user.id !== action.payload);
+    },
+    addUser: (state, action) => {
+      console.log(action.payload);
+       state.users.unshift(action.payload)
+    },
   },
   extraReducers: {
     [setUsers.pending]: (state, action) => {
@@ -31,5 +50,7 @@ export const UsersSlice = createSlice({
 });
 
 export const selectUsers = (state) => state.users;
+
+export const { deleteUser, editUser, addUser } = UsersSlice.actions;
 
 export default UsersSlice.reducer;
