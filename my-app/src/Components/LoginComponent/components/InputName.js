@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 
 import TranslateComponent from "../../TranslateComponent/TranslateComponent";
-import {setName } from "../../../Redux/userData-reducer";
+import { setName } from "../../../Redux/userData-reducer";
 
 const InputName = () => {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ const InputName = () => {
           onChange={(e) => handleChange(e)}
           onKeyPress={event => {
             event.key === 'Enter' && handleBlur();
-        }}
+          }}
         />
       </label>
     </>
