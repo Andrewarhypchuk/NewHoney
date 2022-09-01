@@ -9,7 +9,7 @@ import { selectTheme } from "../../Redux/userSettings-reducer";
 import LogOut from "../LogOutComponent/LogOut";
 import Users from "../UsersComponent/UsersComponent";
 import TranslateComponent from './../TranslateComponent/TranslateComponent';
-import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import ProtectedAdminRoute from "../ProtectedRoutes/ProtectedAdminRoute";
 
 
 const Main = () => {
@@ -20,10 +20,11 @@ const Main = () => {
         <Route path="/" element={<LoginComponent />} />
         <Route path="/profile" element={<ProfileComponent />} />
         <Route path="/login" element={<LoginComponent />} />
-        <Route element={<ProtectedRoute />} >
+        <Route element={<ProtectedAdminRoute />} >
           <Route path="/users" element={<Users />} />
         </Route>
         <Route path="/products" element={<div>Products</div>} />
+        <Route path="/cart" element={<div>Cart</div>} />
         <Route path="/logout" element={<LogOut />} />
         <Route path="*" element={<TranslateComponent str='Page does not exist' />} />
       </Routes>

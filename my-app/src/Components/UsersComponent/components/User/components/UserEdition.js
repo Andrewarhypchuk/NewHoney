@@ -1,9 +1,10 @@
 import React from "react";
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { editUser,deleteUser } from "../../../../../Redux/users-reducer";
+import { editUser, deleteUser } from "../../../../../Redux/users-reducer";
+import TranslateComponent from "../../../../TranslateComponent/TranslateComponent";
 
-const UserEdition = ({ user,setStatus}) => {
+const UserEdition = ({ user, setStatus }) => {
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
@@ -19,7 +20,7 @@ const UserEdition = ({ user,setStatus}) => {
     }
   })
   const dispatch = useDispatch();
-  const edit = (user) =>{
+  const edit = (user) => {
     console.log(JSON.stringify(user))
     dispatch(editUser(user))
     setStatus(true)
@@ -27,7 +28,7 @@ const UserEdition = ({ user,setStatus}) => {
 
   return (
     <div className="d-flex">
-      <form className='d-flex flex-column' onSubmit={ handleSubmit((user) =>edit(user))}>
+      <form className='d-flex flex-column' onSubmit={handleSubmit((user) => edit(user))}>
         <label className="label" htmlFor="username">Username</label>
         <input id='username' className="form-control"  {...register("username", {
           required: "Поле обов'язковe", minLength: {
@@ -71,7 +72,9 @@ const UserEdition = ({ user,setStatus}) => {
         <div className='error'>{errors?.phone && <>{errors?.phone?.message || "Error!"}</>}</div>
         <input className='button btn btn-primary' type="submit" value="Edit" />
       </form>
-      <button className="button btn btn-danger" onClick={() => dispatch(deleteUser(user.id))}>Delete User</button>
+      <button className="button btn btn-danger" onClick={() => dispatch(deleteUser(user.id))}>
+        <TranslateComponent str='Delete User' />
+      </button>
     </div>
   )
 };

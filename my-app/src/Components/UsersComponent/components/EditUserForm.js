@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { addUser } from '../../../Redux/users-reducer';
 import { generatedId } from '../../../Utiles/generateId';
 
-const Form = () => {
+const EditUserForm = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
@@ -69,4 +69,4 @@ const Form = () => {
   )
 };
 
-export default Form;
+export default EditUserForm;

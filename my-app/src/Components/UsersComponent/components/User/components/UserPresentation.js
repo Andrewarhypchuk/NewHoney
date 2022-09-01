@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+
 import TranslateComponent from './../../../../TranslateComponent/TranslateComponent';
 
 const UserPresentation = ({user}) => {

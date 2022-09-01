@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal'
 import TranslateComponent from "../../TranslateComponent/TranslateComponent";
-import Form from "./Form";
+import EditUserForm from "./EditUserForm";
 
 const AddUser = () => {
   const [show, setShow] = useState(false);
@@ -20,7 +20,7 @@ const AddUser = () => {
         <Modal.Header closeButton>
           <Modal.Title><TranslateComponent str='You can add a new user' /></Modal.Title>
         </Modal.Header>
-        <Modal.Body><Form /></Modal.Body>
+        <Modal.Body><EditUserForm /></Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
           <TranslateComponent str='Close' />

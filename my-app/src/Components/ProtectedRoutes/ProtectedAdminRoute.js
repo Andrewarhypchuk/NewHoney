@@ -3,13 +3,12 @@ import { useSelector } from 'react-redux';
 import { Outlet } from "react-router";
 
 import NoAccess from "../NoAccessComponent/NoAccessComponent";
-import { selectAdmin } from './../../Redux/userSettings-reducer';
+import { selectAdmin } from '../../Redux/userSettings-reducer';
 
-const ProtectedRoute = () => {
+const ProtectedAdminRoute = () => {
 
     const isAdmin = useSelector(selectAdmin);
     return isAdmin ? <Outlet /> : <NoAccess />
-
 }
 
-export default ProtectedRoute;
+export default ProtectedAdminRoute;

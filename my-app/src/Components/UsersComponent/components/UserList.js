@@ -7,16 +7,15 @@ import User from "./User/User";
 const UserList = () => {
     const dispatch = useDispatch();
     const users = useSelector(selectUsers);
-    const usersList = users.users.map((user) => {
-        return <User key={user.id} user={user} />;
-      });
-
+ 
       useEffect(() => {
         users.users.length === 0 && dispatch(setUsers);
       });
 
      return(
-      <div>{usersList}</div>
+      users.users.map((user) => {
+        return <User key={user.id} user={user} />;
+      })
   )
 }
 export default UserList;
