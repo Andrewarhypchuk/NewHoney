@@ -19,6 +19,9 @@ const NavBarComponent = () => {
       <NavLink to={"products"}>
         <TranslateComponent str="Products" />
       </NavLink>
+      <NavLink to={"cart"}>
+        <TranslateComponent str="Cart" />
+      </NavLink>
       {isLogged ? (
         <NavLink to={"logout"}>
           <TranslateComponent str="Log Out" />

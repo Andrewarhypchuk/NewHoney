@@ -5,7 +5,7 @@ import TranslateComponent from "../../TranslateComponent/TranslateComponent";
 import { toggleAdmin } from "../../../Redux/userSettings-reducer";
 const ToggleAdminComponent = () => {
   const dispatch = useDispatch();
-  
+
   return (
     <div className="form-check">
       <input
