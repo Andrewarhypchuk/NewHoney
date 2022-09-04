@@ -23,6 +23,7 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
     "translate": "^1.4.1",
+    "typeface-roboto": "^1.1.13",
     "use-debounce": "^8.0.3",
     "web-vitals": "^2.1.4"
   },

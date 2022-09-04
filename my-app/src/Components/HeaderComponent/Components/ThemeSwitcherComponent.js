@@ -26,7 +26,6 @@ const ThemeSwitcher = () => {
         className="form-check-label themeName"
         htmlFor="flexSwitchCheckDefault"
       >
-        <TranslateComponent str={theme} />
       </label>
     </div>
   );

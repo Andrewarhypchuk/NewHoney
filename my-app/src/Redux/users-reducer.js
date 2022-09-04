@@ -27,11 +27,9 @@ export const UsersSlice = createSlice({
       state.users = newUsersMassive;
     },
     deleteUser: (state, action) => {
-      console.log(action.payload);
       state.users = state.users.filter((user) => user.id !== action.payload);
     },
     addUser: (state, action) => {
-      console.log(action.payload);
        state.users.unshift(action.payload)
     },
   },

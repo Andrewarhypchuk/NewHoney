@@ -16,7 +16,6 @@ const LoginComponent = () => {
 
   return (
     <div className="d-flex flex-column align-items-center">
-      <ShowAdminStatus />
       <InputName />
       <InputPassword />
       <ToggleAdminComponent />

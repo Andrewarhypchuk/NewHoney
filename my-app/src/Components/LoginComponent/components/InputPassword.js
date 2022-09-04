@@ -18,7 +18,7 @@ const InputPassword = () => {
   return (
     <>
       <label htmlFor="exampleFormControlInput1" className="form-label">
-        <TranslateComponent str="Enter your password" />
+        <TranslateComponent str="Password..." />
         <input
           type="password"
           className="form-control fs-3"
