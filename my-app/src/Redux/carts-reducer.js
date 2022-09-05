@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { useSelector } from 'react-redux';
 
 export const setCarts = createAsyncThunk(
   "carts/setCarts",
@@ -18,13 +19,15 @@ export const CartsSlice = createSlice({
   },
   reducers: {
     changeCart: (state, action) => {
-      const newCartMassive = state.carts.map((cart) => {
+      state.carts = state.carts.map((cart) => {
         if (cart.id === action.payload.id) {
-          cart = action.payload;
+        return  action.payload;
         }
-        return cart;
+        return {
+          ...cart,
+          ...action.cart
+        };
       });
-      state.carts = newCartMassive;
     }
   },
   extraReducers: {
@@ -42,6 +45,7 @@ export const CartsSlice = createSlice({
 });
 
 export const selectCarts = (state) => state.carts;
+export const GetCartById = (id)=> useSelector((state) => state.carts.carts.find((cart)=>cart.userId === id));
 
 export const { changeCart } = CartsSlice.actions;
 

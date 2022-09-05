@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { useSelector } from 'react-redux';
 
 export const setProducts = createAsyncThunk(
   "carts/setProducts",
@@ -34,6 +35,7 @@ export const ProductsSlice = createSlice({
 });
 
 export const selectProducts = (state) => state.products;
+export const GetProductById = (id)=> useSelector((state) => state.products.products.find((product)=>product.id === id));
 
 export const { } = ProductsSlice.actions;
 

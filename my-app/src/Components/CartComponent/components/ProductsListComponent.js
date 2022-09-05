@@ -1,26 +1,30 @@
 import React, { useState } from "react";
 
+import { GetCartById } from "../../../Redux/carts-reducer";
 import CartProductEdit from "./CartProductEdit";
 import CartProductView from './CartProductView';
 import ConfirmCartChangesModal from './ConfirmCartChangesButton';
 
-const ProductsListComponent = ({ list, cart }) => {
-    const [localCart, setLocalCart] = useState(cart);
+const ProductsListComponent = ({ userId }) => {
+    const [localCart, setLocalCart] = useState(GetCartById(userId));
 
-    return (<div className='d-flex align-items-center flex-column '>
+      if (localCart !== undefined) return (
+      <div className='d-flex align-items-center flex-column '>
         {localCart.products.length !== 0 ? <div> {
-            localCart.products.map((item, index) => {
+            localCart.products.map((product, index) => {
 
-                return <div className="d-flex align-items-center">
-                    <CartProductView list={list} product={item} />
-                    <CartProductEdit item={item} cart={localCart} setCart={setLocalCart} productIndex={index} />
+                return <div key={index} className="d-flex align-items-center">
+                    <CartProductView product={product} />
+                    <CartProductEdit item={product} cart={localCart} setCart={setLocalCart} productIndex={index} />
                 </div>
             })
         }
-        </div> : <div>Empty</div>}
+        </div>:<div>Empty</div>}
         <ConfirmCartChangesModal cart={localCart} />
     </div>
     )
+
+    return <div>No cart</div>
 }
 
 export default ProductsListComponent;

@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 
 import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import ReactModal from "react-modal";
+import { useModal } from "react-modal-hook";
 import TranslateComponent from "../../TranslateComponent/TranslateComponent";
 
 const DeleteProductComponent = ({ productIndex, setCart, cart }) => {
-
-    const [show, setShow] = useState(false);
     const deleteProduct = () => {
         setCart({
             ...cart, products: [...cart.products.filter(
@@ -14,31 +13,26 @@ const DeleteProductComponent = ({ productIndex, setCart, cart }) => {
             )
             ]
         })
-        handleClose()
+        hideModal()
     }
-    const handleClose = () => setShow(false);
-    const handleShow = () => {
-        setShow(true);
-    };
-    
-    return (<>
-        <Button className='button btn-danger' variant="primary" onClick={handleShow}>
-            <TranslateComponent str='Delete Product' />
-        </Button>
-        <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
-                <Modal.Title><TranslateComponent str='When click , you can not cancel this operation !' /></Modal.Title>
-            </Modal.Header>
-            <Modal.Body><TranslateComponent str="Delete this cart?" /></Modal.Body>
-            <Modal.Footer>
-                <Button className="btn-danger" variant="secondary" onClick={deleteProduct}>
+    const [showModal, hideModal] = useModal(() => (
+        <ReactModal className='modalContainer' ariaHideApp={false} isOpen>
+            <TranslateComponent str="Delete this cart?" />
+            <div>
+                <Button className="button btn-danger" variant="secondary" onClick={deleteProduct}>
                     <TranslateComponent str='Delete' />
                 </Button>
-                <Button variant="secondary" onClick={handleClose}>
+                <Button className="button" variant="secondary" onClick={hideModal}>
                     <TranslateComponent str='Close' />
                 </Button>
-            </Modal.Footer>
-        </Modal>
-    </>)
+            </div>
+        </ReactModal>
+    ));
+
+    return (
+        <Button className='button btn-danger' variant="primary" onClick={showModal}>
+            <TranslateComponent str='Delete Product' />
+        </Button>
+    )
 }
 export default DeleteProductComponent;
