@@ -1,16 +1,21 @@
 import React from "react";
+import { useDispatch } from 'react-redux';
 
 import TranslateComponent from "../../TranslateComponent/TranslateComponent";
-import DeleteProductComponent from "./DeleteProductComponent";
+import { changeCart } from "../../../Redux/carts-reducer";
 
-const CartProductEdit = ({ item, productIndex, setCart, cart }) => {
+const CartProductEdit = ({ item, productId, cart }) => {
+  const dispatch = useDispatch()
   const increaseQuantity = () => {
-    setCart({ ...cart, products: [...cart.products.map((product, index) => index === productIndex ? { ...product, quantity: item.quantity + 1 } : product)] })
+      dispatch(changeCart({ ...cart, products: [...cart.products.map((product) => product.productId === productId ? { ...product, quantity: item.quantity + 1 } : product)] }))
   }
   const decreaseQuantity = () => {
     if (item.quantity !== 0) {
-      setCart({ ...cart, products: [...cart.products.map((product, index) => index === productIndex ? { ...product, quantity: item.quantity - 1 } : product)] })
+      dispatch(changeCart({ ...cart, products: [...cart.products.map((product) => product.productId === productId ? { ...product, quantity: item.quantity - 1 } : product)] }))
     }
+  }
+  const deleteProduct = () => {
+      dispatch(changeCart({ ...cart, products: [...cart.products.filter((product) => product.productId !== productId)] }))
   }
 
   return (
@@ -20,7 +25,7 @@ const CartProductEdit = ({ item, productIndex, setCart, cart }) => {
         <div className="quantityContainer"><TranslateComponent str='Quantity' />: {item.quantity}</div>
         <button className="btn btn-success" onClick={increaseQuantity}>+</button>
       </div>
-      <DeleteProductComponent productIndex={productIndex} setCart={setCart} cart={cart} />
+      <button className="btn btn-danger" onClick={deleteProduct}><TranslateComponent str='Delete Product' /></button>
     </div>
   )
 }

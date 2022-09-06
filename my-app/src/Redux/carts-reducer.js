@@ -19,15 +19,17 @@ export const CartsSlice = createSlice({
   },
   reducers: {
     changeCart: (state, action) => {
-      state.carts = state.carts.map((cart) => {
-        if (cart.id === action.payload.id) {
-        return  action.payload;
-        }
-        return {
-          ...cart,
-          ...action.cart
-        };
-      });
+      return {
+        ...state, carts: [...state.carts.map((cart) => {
+          if (cart.id === action.payload.id) {
+            return action.payload;
+          }
+          return {
+            ...cart,
+            ...action.cart
+          };
+        })]
+      }
     }
   },
   extraReducers: {
@@ -45,7 +47,7 @@ export const CartsSlice = createSlice({
 });
 
 export const selectCarts = (state) => state.carts;
-export const GetCartById = (id)=> useSelector((state) => state.carts.carts.find((cart)=>cart.userId === id));
+export const selectCartByUserId = (id) => useSelector((state) => state.carts.carts.find((cart) => cart.userId === id));
 
 export const { changeCart } = CartsSlice.actions;
 
