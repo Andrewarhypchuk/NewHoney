@@ -12,7 +12,7 @@ const ProductsListComponent = ({ userId }) => {
         {cart.products.length !== 0 ? <div> {
             cart.products.map((product, index) => {
 
-                return <div key={index} className="d-flex align-items-center">
+                return <div key={product.productId} className="d-flex align-items-center">
                     <CartProductView product={product} />
                     <CartProductEdit item={product} cartId={cart.id} productId={product.productId} />
                 </div>

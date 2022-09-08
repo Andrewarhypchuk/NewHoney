@@ -13,7 +13,7 @@ const CartsList = () => {
             <div>
                 {users.map((user, index) => {
 
-                    return <SingleUserCart key={index} user={user} />
+                    return <SingleUserCart key={user.id} user={user} />
                 })}
             </div>
 
