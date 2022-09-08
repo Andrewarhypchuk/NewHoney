@@ -9,17 +9,18 @@ export const setCarts = createAsyncThunk(
       .then((response) => response.data);
   }
 );
+const initialState = {
+  carts: [],
+  status: null
+}
 
 export const CartsSlice = createSlice({
   name: "carts",
-  initialState: {
-    carts: [],
-    status: null
-  },
+  initialState,
   reducers: {
     increaseProductQuantity: (state, action) => {
       return {
-        ...state, carts: [...state.carts.map((cart) => {
+        ...state, carts: state.carts.map((cart) => {
           if (cart.id === action.payload.cartId) {
             return {
               ...cart, products: [...cart.products.map((product) => {
@@ -27,16 +28,13 @@ export const CartsSlice = createSlice({
               })]
             }
           }
-          return {
-            ...cart,
-            ...action.cart
-          };
-        })]
+          return cart ;
+        })
       }
     },
     decreaseProductQuantity: (state, action) => {
       return {
-        ...state, carts: [...state.carts.map((cart) => {
+        ...state, carts:state.carts.map((cart) => {
           if (cart.id === action.payload.cartId) {
             return {
               ...cart, products: [...cart.products.map((product) => {
@@ -44,24 +42,18 @@ export const CartsSlice = createSlice({
               })]
             }
           }
-          return {
-            ...cart,
-            ...action.cart
-          };
-        })]
+          return  cart
+        })
       }
     },
     deleteСartProduct: (state, action) => {
       return {
-        ...state, carts: [...state.carts.map((cart) => {
+        ...state, carts:state.carts.map((cart) => {
           if (cart.id === action.payload.cartId) {
             return { ...cart, products: [...cart.products.filter((product) => product.productId !== action.payload.productId)] }
           }
-          return {
-            ...cart,
-            ...action.cart
-          };
-        })]
+          return cart
+        })
       }
     }
   },
