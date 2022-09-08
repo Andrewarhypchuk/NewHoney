@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { useSelector } from 'react-redux';
 
 export const setUsers = createAsyncThunk(
   "users/setUsers",
@@ -54,13 +53,8 @@ export const UsersSlice = createSlice({
 });
 
 export const selectUsers = (state) => state.users;
-export const GetUserById = (id)=> useSelector((state) => state.users.users.find((user)=>user.id === id));
-export const FilteredUsersByName =()=>useSelector((state)=>{
-  if(state.users.searchName !== '' && state.users.searchName !== null){
-  return state.users.users.filter((user)=>user.username === state.users.searchName)
-  }
-  return state.users.users
-})
+export const selectUserById = (state,id) => state.users.users.find((user)=>user.id === id);
+export const selectfilteredByNameUsers =(state)=> state.users.searchName !== '' ? state.users.users.filter((user)=>user.username === state.users.searchName): state.users.users
 
 export const { deleteUser, editUser, addUser ,setSearchName } = UsersSlice.actions;
 

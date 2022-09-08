@@ -19,8 +19,6 @@ const CartProductEdit = ({  item,productId,cartId }) => {
      dispatch(deleteСartProduct({cartId,productId}))
   }
 
-
-
   return (
     <div className="d-flex flex-column align-items-center" >
       <div className="d-flex align-items-center justify-content-around ">

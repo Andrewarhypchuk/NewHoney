@@ -1,11 +1,12 @@
 import React from "react";
 
-import { SelectCartByUserId } from "../../../Redux/carts-reducer";
+import { selectCartByUserId } from "../../../Redux/carts-reducer";
 import CartProductEdit from "./CartProductEdit";
 import CartProductView from './CartProductView';
+import { useSelector } from 'react-redux';
 
 const ProductsListComponent = ({ userId }) => {
-    const cart = SelectCartByUserId(userId)
+    const cart = useSelector(state=>selectCartByUserId(state,userId))
 
       if (cart !== undefined) return (
       <div className='d-flex align-items-center flex-column '>

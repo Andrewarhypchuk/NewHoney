@@ -1,11 +1,12 @@
 import React from "react";
 
 import SingleUserCart from './SingleUserCart';
-import { FilteredUsersByName } from './../../../Redux/users-reducer';
+import {selectfilteredByNameUsers } from './../../../Redux/users-reducer';
 import SearchCartByUserName from "./SearchCartByUserName";
+import { useSelector } from 'react-redux';
 
 const CartsList = () => {
-    const users = FilteredUsersByName();
+    const users = useSelector(selectfilteredByNameUsers);
     
     return (
         <div className="d-flex flex-column align-items-center">

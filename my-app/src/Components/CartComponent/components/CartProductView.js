@@ -1,10 +1,11 @@
 import React from "react";
-import { GetProductById } from "../../../Redux/products-reducer";
+import { selectProductById } from "../../../Redux/products-reducer";
 
 import TranslateComponent from "../../TranslateComponent/TranslateComponent";
+import { useSelector } from 'react-redux';
 
 const CartProductView = ({ product }) => {
-  const localProduct = GetProductById(product.productId);
+  const localProduct = useSelector(state=>selectProductById(state,product.productId));
 
   return (<div className="productView">
     <img className="productImg" src={localProduct.image} alt='img'></img>
