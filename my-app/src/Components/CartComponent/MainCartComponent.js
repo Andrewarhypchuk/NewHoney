@@ -7,7 +7,7 @@ import SipmleUserCart from "./components/SimpleUserCartComponent";
 
 const MainCartComponent = () => {
     const isAdmin = useSelector(selectAdmin);
-
+    
     if (isAdmin) return <CartList />
     return <SipmleUserCart />
 }

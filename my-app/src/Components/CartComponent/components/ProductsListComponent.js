@@ -1,11 +1,11 @@
 import React from "react";
 
-import { selectCartByUserId } from "../../../Redux/carts-reducer";
+import { SelectCartByUserId } from "../../../Redux/carts-reducer";
 import CartProductEdit from "./CartProductEdit";
 import CartProductView from './CartProductView';
 
 const ProductsListComponent = ({ userId }) => {
-    const cart = selectCartByUserId(userId)
+    const cart = SelectCartByUserId(userId)
 
       if (cart !== undefined) return (
       <div className='d-flex align-items-center flex-column '>
@@ -14,7 +14,7 @@ const ProductsListComponent = ({ userId }) => {
 
                 return <div key={index} className="d-flex align-items-center">
                     <CartProductView product={product} />
-                    <CartProductEdit item={product} cart={cart} productId={product.productId} />
+                    <CartProductEdit item={product} cartId={cart.id} productId={product.productId} />
                 </div>
             })
         }

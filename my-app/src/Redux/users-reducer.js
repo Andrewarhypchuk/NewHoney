@@ -15,6 +15,7 @@ export const UsersSlice = createSlice({
   name: "users",
   initialState: {
     users: [],
+    searchName:'',
     status: null
   },
   reducers: {
@@ -33,6 +34,10 @@ export const UsersSlice = createSlice({
     addUser: (state, action) => {
        state.users.unshift(action.payload)
     },
+    setSearchName:(state,action)=>{
+       state.searchName = action.payload
+    }
+
   },
   extraReducers: {
     [setUsers.pending]: (state, action) => {
@@ -50,7 +55,13 @@ export const UsersSlice = createSlice({
 
 export const selectUsers = (state) => state.users;
 export const GetUserById = (id)=> useSelector((state) => state.users.users.find((user)=>user.id === id));
+export const FilteredUsersByName =()=>useSelector((state)=>{
+  if(state.users.searchName !== '' && state.users.searchName !== null){
+  return state.users.users.filter((user)=>user.username === state.users.searchName)
+  }
+  return state.users.users
+})
 
-export const { deleteUser, editUser, addUser } = UsersSlice.actions;
+export const { deleteUser, editUser, addUser ,setSearchName } = UsersSlice.actions;
 
 export default UsersSlice.reducer;

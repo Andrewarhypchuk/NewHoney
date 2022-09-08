@@ -18,11 +18,45 @@ export const CartsSlice = createSlice({
     status: null
   },
   reducers: {
-    changeCart: (state, action) => {
+    increaseProductQuantity: (state, action) => {
       return {
         ...state, carts: [...state.carts.map((cart) => {
-          if (cart.id === action.payload.id) {
-            return action.payload;
+          if (cart.id === action.payload.cartId) {
+            return {
+              ...cart, products: [...cart.products.map((product) => {
+                return product.productId === action.payload.productId ? {...product,quantity:product.quantity + 1 } : product
+              })]
+            }
+          }
+          return {
+            ...cart,
+            ...action.cart
+          };
+        })]
+      }
+    },
+    decreaseProductQuantity: (state, action) => {
+      return {
+        ...state, carts: [...state.carts.map((cart) => {
+          if (cart.id === action.payload.cartId) {
+            return {
+              ...cart, products: [...cart.products.map((product) => {
+                return product.productId === action.payload.productId ? {...product,quantity:product.quantity - 1 } : product
+              })]
+            }
+          }
+          return {
+            ...cart,
+            ...action.cart
+          };
+        })]
+      }
+    },
+    deleteСartProduct: (state, action) => {
+      return {
+        ...state, carts: [...state.carts.map((cart) => {
+          if (cart.id === action.payload.cartId) {
+            return { ...cart, products: [...cart.products.filter((product) => product.productId !== action.payload.productId)] }
           }
           return {
             ...cart,
@@ -47,8 +81,7 @@ export const CartsSlice = createSlice({
 });
 
 export const selectCarts = (state) => state.carts;
-export const selectCartByUserId = (id) => useSelector((state) => state.carts.carts.find((cart) => cart.userId === id));
-
-export const { changeCart } = CartsSlice.actions;
+export const SelectCartByUserId = (id) => useSelector((state) => state.carts.carts.find((cart) => cart.userId === id));
+export const {increaseProductQuantity,decreaseProductQuantity,deleteСartProduct } = CartsSlice.actions;
 
 export default CartsSlice.reducer;

@@ -2,21 +2,24 @@ import React from "react";
 import { useDispatch } from 'react-redux';
 
 import TranslateComponent from "../../TranslateComponent/TranslateComponent";
-import { changeCart } from "../../../Redux/carts-reducer";
+import { increaseProductQuantity,decreaseProductQuantity,deleteСartProduct } from "../../../Redux/carts-reducer";
 
-const CartProductEdit = ({ item, productId, cart }) => {
+const CartProductEdit = ({  item,productId,cartId }) => {
   const dispatch = useDispatch()
+ 
   const increaseQuantity = () => {
-      dispatch(changeCart({ ...cart, products: [...cart.products.map((product) => product.productId === productId ? { ...product, quantity: item.quantity + 1 } : product)] }))
+      dispatch(increaseProductQuantity({cartId,productId}))
   }
   const decreaseQuantity = () => {
     if (item.quantity !== 0) {
-      dispatch(changeCart({ ...cart, products: [...cart.products.map((product) => product.productId === productId ? { ...product, quantity: item.quantity - 1 } : product)] }))
+      dispatch(decreaseProductQuantity({cartId,productId}))
     }
   }
   const deleteProduct = () => {
-      dispatch(changeCart({ ...cart, products: [...cart.products.filter((product) => product.productId !== productId)] }))
+     dispatch(deleteСartProduct({cartId,productId}))
   }
+
+
 
   return (
     <div className="d-flex flex-column align-items-center" >
