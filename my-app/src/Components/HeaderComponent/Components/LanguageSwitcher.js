@@ -16,7 +16,7 @@ const LanguageSwitcher = () => {
   return (
     <div className="d-flex flex-column-reverse">
       <Dropdown>
-        <Dropdown.Toggle className="buttonLanguage" id="dropdown-basic">
+        <Dropdown.Toggle className="buttonLanguage languageButton" id="dropdown-basic">
           <TranslateComponent str={language} />
         </Dropdown.Toggle>
 
@@ -35,9 +35,6 @@ const LanguageSwitcher = () => {
           </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
-      <div className="languageName">
-        <TranslateComponent str="Change language" />
-      </div>
     </div>
   );
 };

@@ -18,7 +18,7 @@ const InputName = () => {
   return (
     <>
       <label htmlFor="exampleFormControlInput1" className="form-label">
-        <TranslateComponent str="Enter your nickname" />
+        <TranslateComponent str="Nickname..." />
         <input
           type="text"
           className="form-control fs-3"

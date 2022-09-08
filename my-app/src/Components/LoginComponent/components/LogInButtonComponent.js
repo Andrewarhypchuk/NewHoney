@@ -3,7 +3,7 @@ import { useSelector,useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import TranslateComponent from "../../TranslateComponent/TranslateComponent";
-import { selectName ,selectPassword} from "../../../Redux/userData-reducer";
+import { selectName ,selectPassword, setId} from "../../../Redux/userData-reducer";
 import { selectUsers } from "./../../../Redux/users-reducer";
 import { toggleIsLogged } from "../../../Redux/userSettings-reducer";
 
@@ -24,7 +24,8 @@ const LogInButton = () => {
 
       if (logUser.length !== 0) {
         navigate("/profile");
-        dispatch(toggleIsLogged());
+        dispatch(toggleIsLogged())
+        dispatch(setId(logUser[0].id));
       }
   }
 

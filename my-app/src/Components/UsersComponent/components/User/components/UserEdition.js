@@ -21,7 +21,6 @@ const UserEdition = ({ user, setStatus }) => {
   })
   const dispatch = useDispatch();
   const edit = (user) => {
-    console.log(JSON.stringify(user))
     dispatch(editUser(user))
     setStatus(true)
   }
