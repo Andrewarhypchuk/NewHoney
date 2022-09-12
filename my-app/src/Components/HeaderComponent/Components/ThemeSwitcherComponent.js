@@ -14,19 +14,15 @@ const ThemeSwitcher = () => {
   }
 
   return (
-    <div className="form-check form-switch">
+    <div className="form-check form-switch d-flex align-items-center">
       <input
         className="form-check-input"
         onClick={changeCurrentTheme}
         type="checkbox"
         role="switch"
-        id="flexSwitchCheckDefault"
+        id="switch"
       />
-      <label
-        className="form-check-label themeName"
-        htmlFor="flexSwitchCheckDefault"
-      >
-      </label>
+     <div className="themeIcon"></div>
     </div>
   );
 };

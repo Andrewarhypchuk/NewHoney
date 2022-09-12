@@ -13,11 +13,11 @@ export const setProducts = createAsyncThunk(
 export const ProductsSlice = createSlice({
   name: "products",
   initialState: {
-    products: [],
+    productsList: [],
     status: null
   },
   reducers: {
-   
+
   },
   extraReducers: {
     [setProducts.pending]: (state, action) => {
@@ -25,7 +25,7 @@ export const ProductsSlice = createSlice({
     },
     [setProducts.fulfilled]: (state, action) => {
       state.status = "success";
-      state.products = action.payload;
+      state.productsList = action.payload;
     },
     [setProducts.rejected]: (state, action) => {
       state.status = "failed";
@@ -33,8 +33,9 @@ export const ProductsSlice = createSlice({
   },
 });
 
-export const selectProducts = (state) => state.products;
-export const selectProductById = (state,id) => state.products.products.find((product)=>product.id === id);
+export const selectProducts = (state) => state.products.productsList;
+export const selectProductsByCategory = (state, category) => category ? state.products.productsList.filter((product) => product.category === category) : state.products.productsList
+export const selectProductById = (state, id) => state.products.productsList.find((product) => product.id === id);
 
 export const { } = ProductsSlice.actions;
 

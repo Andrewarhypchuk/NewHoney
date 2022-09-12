@@ -12,6 +12,7 @@ import TranslateComponent from './../TranslateComponent/TranslateComponent';
 import ProtectedAdminRoute from "../ProtectedRoutes/ProtectedAdminRoute";
 import ProtectedLogInRoute from './../ProtectedRoutes/ProtectedLogInRoute';
 import MainCartComponent from "../CartComponent/MainCartComponent";
+import ProductsContainerComponent from './../ProductsComponent/ProductsContainerComponent';
 
 
 const Main = () => {
@@ -22,10 +23,10 @@ const Main = () => {
         <Route path="/" element={<LoginComponent />} />
         <Route path="/profile" element={<ProfileComponent />} />
         <Route path="/login" element={<LoginComponent />} />
+        <Route path="/products" element={<ProductsContainerComponent />} />
         <Route element={<ProtectedAdminRoute />} >
           <Route path="/users" element={<Users />} />
         </Route>
-        <Route path="/products" element={<div>Products</div>} />
         <Route element={<ProtectedLogInRoute />} >
           <Route path="/cart" element={<MainCartComponent />} />
         </Route>

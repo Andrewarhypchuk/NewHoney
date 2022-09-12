@@ -1,21 +1,39 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 import TranslateComponent from "../../TranslateComponent/TranslateComponent";
-import { selectName } from "../../../Redux/userData-reducer";
+import { selectUserId } from "../../../Redux/userData-reducer";
 import { capitalizeFirstLetter } from "./../../../Utiles/capitalizeFirstLetter";
+import { selectUserById } from "../../../Redux/users-reducer";
 
 const User = () => {
-  const name = capitalizeFirstLetter(useSelector(selectName));
+  const userId = useSelector(selectUserId)
+  const user = useSelector(state => selectUserById(state, userId))
 
   return (
-    <div className="d-flex flex-column align-items-center">
-      <div>
-        <TranslateComponent str={`Name: ${name}`} />
+    <div className="profileContainer">
+      <TranslateComponent str='Profile' />
+    <div className="profileView">
+      <TranslateComponent str={`Name: ${user.name.firstname} ${user.name.lastname}`} />
+      <div><TranslateComponent str='Password: ' />{user.password}</div>
+      <div><TranslateComponent str='Email: ' />{user.email}</div>
+      <div><TranslateComponent str='City : ' />{capitalizeFirstLetter(user.address.city)}</div>
+      <div><TranslateComponent str='Street : ' />{capitalizeFirstLetter(user.address.street)}</div>
+      <div><TranslateComponent str='Phone: ' />{user.phone}</div>
+      <div className="d-flex">
+      <NavLink to={"/products"}>
+             <div className="button">
+              <TranslateComponent str='To Products' />
+             </div>
+      </NavLink>
+      <NavLink to={"/cart"}>
+             <div className="button">
+              <TranslateComponent str='To Cart' />
+             </div>
+      </NavLink>
       </div>
-      <div>
-        <TranslateComponent str="You have no access to other users" />{" "}
-      </div>
+    </div>
     </div>
   );
 };

@@ -23,9 +23,9 @@ export const CartsSlice = createSlice({
         ...state, carts: state.carts.map((cart) => {
           if (cart.id === action.payload.cartId) {
             return {
-              ...cart, products: [...cart.products.map((product) => {
+              ...cart, products: cart.products.map((product) => {
                 return product.productId === action.payload.productId ? {...product,quantity:product.quantity + 1 } : product
-              })]
+              })
             }
           }
           return cart ;
@@ -55,6 +55,21 @@ export const CartsSlice = createSlice({
           return cart
         })
       }
+    },
+    addCartProduct:(state,action)=>{
+      console.log(action.payload)
+   return {
+      ...state,carts:state.carts.map((cart)=>{
+        if (cart.id === action.payload.cartId) {
+          return {
+            ...cart, products: [...cart.products,action.payload.product]
+          }
+        }
+        return cart
+      }
+         
+      )
+    }
     }
   },
   extraReducers: {
@@ -73,6 +88,6 @@ export const CartsSlice = createSlice({
 
 export const selectCarts = (state) => state.carts;
 export const selectCartByUserId = (state,id) => state.carts.carts.find((cart) => cart.userId === id);
-export const {increaseProductQuantity,decreaseProductQuantity,deleteСartProduct } = CartsSlice.actions;
+export const {increaseProductQuantity,decreaseProductQuantity,deleteСartProduct,addCartProduct } = CartsSlice.actions;
 
 export default CartsSlice.reducer;
