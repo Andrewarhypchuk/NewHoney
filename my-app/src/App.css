@@ -362,3 +362,18 @@ form {
     margin-top: 400px;
 
 }
+.navbar_container{
+width:600px;
+display: flex;
+justify-content: space-between;
+}
+.noAcceess_container{
+    background-color: rgba(14, 60, 100, 0.3);
+    padding: 30px;
+    border-radius: 10px;
+}
+.dropdowns_container{
+    width:300px;
+    display: flex;
+    justify-content: space-between;
+}

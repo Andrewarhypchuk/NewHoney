@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import ShowAdminStatus from "./components/ShowAdminStatusComponent";
 import LogInButton from './components/LogInButtonComponent';
 import ToggleAdminComponent from "./components/ToggleAdminComponent";
 import InputName from "./components/InputName";

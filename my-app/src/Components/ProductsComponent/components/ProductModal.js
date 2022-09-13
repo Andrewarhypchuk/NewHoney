@@ -1,32 +1,41 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Modal from 'react-modal';
 
 import EditProductModal from './EditProductModal';
 import useModalsInformation from './../../../Utiles/hooks/useModalsInformation';
-import AddProduct from './AddProduct';
+import { addCartProduct } from '../../../Redux/carts-reducer';
 
 const ProductModal = ({ productId }) => {
+    const dispatch = useDispatch();
+
     const [modalIsOpen, setIsOpen] = useState(false);
-    const { isProductInCart, cartId, userProduct } = useModalsInformation(productId)
+    const { isProductInCart, cartId } = useModalsInformation(productId);
+
+    const addProduct = () => {
+        const product = { productId: productId, quantity: 1 }
+        if (isProductInCart === undefined) {
+            dispatch(addCartProduct({ cartId, product }))
+            setIsOpen(true)
+        } else {
+            setIsOpen(true)
+        }
+    }
 
     return <div>
-        <button className='btn btn-warning' onClick={() => setIsOpen(true)}>Add to cart</button>
+        <button className='btn btn-warning' onClick={addProduct}>Add to cart</button>
         <Modal
             isOpen={modalIsOpen}
             ariaHideApp={false}
             onRequestClose={() => setIsOpen(false)}
             className='modalWindow'
         >
-            {isProductInCart === undefined ?
-             <AddProduct setIsOpen={setIsOpen}
-                         cartId={cartId}
-                         productId={productId} 
-                         /> :
-             <EditProductModal 
+            {isProductInCart !== undefined &&
+                <EditProductModal
                     setIsOpen={setIsOpen}
                     cartId={cartId}
                     productId={productId}
-                    quantity={userProduct.quantity} />
+                    quantity={isProductInCart.quantity} />
             }
         </Modal>
     </div>

@@ -47,6 +47,7 @@ export const CartsSlice = createSlice({
       }
     },
     deleteСartProduct: (state, action) => {
+      
       return {
         ...state, carts:state.carts.map((cart) => {
           if (cart.id === action.payload.cartId) {
@@ -57,7 +58,7 @@ export const CartsSlice = createSlice({
       }
     },
     addCartProduct:(state,action)=>{
-      console.log(action.payload)
+
    return {
       ...state,carts:state.carts.map((cart)=>{
         if (cart.id === action.payload.cartId) {

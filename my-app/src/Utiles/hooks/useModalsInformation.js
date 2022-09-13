@@ -8,9 +8,8 @@ const useModalsInformation = (productId) =>{
     const userCart = useSelector(state => selectCartByUserId(state, userId));
     const cartId = userCart.id
     const isProductInCart = userCart.products.find((product) => product.productId === productId);
-    const userProduct = userCart.products.find((product) => product.productId === productId);
 
-    return { isProductInCart,cartId, userProduct}
+    return { isProductInCart,cartId}
 }
 
 export default useModalsInformation;

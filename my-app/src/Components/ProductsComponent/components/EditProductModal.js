@@ -1,12 +1,13 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 
 import CartProductEdit from '../../CartComponent/components/CartProductEdit';
 import TranslateComponent from '../../TranslateComponent/TranslateComponent';
 import DeleteProduct from '../../CartComponent/components/ButtonProductDelete';
 
-const EditProductModal = ({ setIsOpen, productId,quantity,cartId }) => {
+const EditProductModal = ({ setIsOpen, productId, quantity, cartId }) => {
     const [modalDeleleIsOpen, setModalDeleteIsOpen] = useState(false);
+
     useEffect(() => {
         if (quantity === 0) {
             setModalDeleteIsOpen(true)
@@ -15,13 +16,13 @@ const EditProductModal = ({ setIsOpen, productId,quantity,cartId }) => {
 
     return <div>
         <div className='d-flex flex-column align-items-center'>
-                <TranslateComponent str='This product is in your Cart' />
-                <CartProductEdit quantity={quantity} cartId={cartId} productId={productId} />
+            <TranslateComponent str='You successfully added this product to Cart!' />
+            <CartProductEdit quantity={quantity} cartId={cartId} productId={productId} />
             <div className='d-flex'>
-            <div className='btn button btn-danger'  onClick={() => setModalDeleteIsOpen(true)} >Delete Product</div>
-            <div className='btn button btn-light' onClick={() => setIsOpen(false)} >Close</div>
+                <div className='btn button btn-danger' onClick={() => setModalDeleteIsOpen(true)} >Delete Product</div>
+                <div className='btn button btn-light' onClick={() => setIsOpen(false)} >Close</div>
             </div>
-            
+
         </div>
         <Modal
             isOpen={modalDeleleIsOpen}
@@ -30,10 +31,10 @@ const EditProductModal = ({ setIsOpen, productId,quantity,cartId }) => {
             className='modalWindow'
         >
             <div className='d-flex flex-column align-items-center'>
-                <div>Delete Product?</div>
+                <TranslateComponent str="Delete Product?" />
                 <div className='d-flex'>
-                   <DeleteProduct setIsOpen={setIsOpen} cartId={cartId} productId={productId} />
-                    <div className='btn button btn-light' onClick={()=>setModalDeleteIsOpen(false)}>Cancel</div>
+                    <DeleteProduct setIsOpen={setIsOpen} cartId={cartId} productId={productId} />
+                    <div className='btn button btn-light' onClick={() => setModalDeleteIsOpen(false)}>Cancel</div>
                 </div>
             </div>
         </Modal>

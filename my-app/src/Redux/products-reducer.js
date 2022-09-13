@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { ALL, RANDOM_PRICE } from './../Utiles/consts';
 
 export const setProducts = createAsyncThunk(
   "carts/setProducts",
@@ -14,10 +15,17 @@ export const ProductsSlice = createSlice({
   name: "products",
   initialState: {
     productsList: [],
-    status: null
+    status: null,
+    category:ALL,
+    sortValue:RANDOM_PRICE
   },
   reducers: {
-
+    changeCategory: (state, action) =>{
+         return{ ...state,category:action.payload }
+    },
+    changeSortValue: (state, action) =>{
+      return{ ...state,sortValue:action.payload }
+ }
   },
   extraReducers: {
     [setProducts.pending]: (state, action) => {
@@ -33,10 +41,11 @@ export const ProductsSlice = createSlice({
   },
 });
 
+export const selectSortValue = (state)=>state.products.sortValue;
 export const selectProducts = (state) => state.products.productsList;
-export const selectProductsByCategory = (state, category) => category ? state.products.productsList.filter((product) => product.category === category) : state.products.productsList
+export const selectProductsByCategory = (state) => state.products.category !== ALL  ? state.products.productsList.filter((product) => product.category === state.products.category) : state.products.productsList
 export const selectProductById = (state, id) => state.products.productsList.find((product) => product.id === id);
 
-export const { } = ProductsSlice.actions;
+export const { changeCategory ,changeSortValue } = ProductsSlice.actions;
 
 export default ProductsSlice.reducer;
