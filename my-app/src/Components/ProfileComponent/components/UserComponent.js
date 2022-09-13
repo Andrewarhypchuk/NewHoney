@@ -6,11 +6,12 @@ import TranslateComponent from "../../TranslateComponent/TranslateComponent";
 import { selectUserId } from "../../../Redux/userData-reducer";
 import { capitalizeFirstLetter } from "./../../../Utiles/capitalizeFirstLetter";
 import { selectUserById } from "../../../Redux/users-reducer";
+import useCheckCartExistence from './../../../Utiles/hooks/useCheckCartExistence';
 
 const User = () => {
   const userId = useSelector(selectUserId)
   const user = useSelector(state => selectUserById(state, userId))
-
+  useCheckCartExistence()
   return (
     <div className="profileContainer">
       <TranslateComponent str='Profile' />

@@ -24,32 +24,32 @@ export const CartsSlice = createSlice({
           if (cart.id === action.payload.cartId) {
             return {
               ...cart, products: cart.products.map((product) => {
-                return product.productId === action.payload.productId ? {...product,quantity:product.quantity + 1 } : product
+                return product.productId === action.payload.productId ? { ...product, quantity: product.quantity + 1 } : product
               })
             }
           }
-          return cart ;
+          return cart;
         })
       }
     },
     decreaseProductQuantity: (state, action) => {
       return {
-        ...state, carts:state.carts.map((cart) => {
+        ...state, carts: state.carts.map((cart) => {
           if (cart.id === action.payload.cartId) {
             return {
               ...cart, products: [...cart.products.map((product) => {
-                return product.productId === action.payload.productId ? {...product,quantity:product.quantity - 1 } : product
+                return product.productId === action.payload.productId ? { ...product, quantity: product.quantity - 1 } : product
               })]
             }
           }
-          return  cart
+          return cart
         })
       }
     },
     deleteСartProduct: (state, action) => {
-      
+
       return {
-        ...state, carts:state.carts.map((cart) => {
+        ...state, carts: state.carts.map((cart) => {
           if (cart.id === action.payload.cartId) {
             return { ...cart, products: [...cart.products.filter((product) => product.productId !== action.payload.productId)] }
           }
@@ -57,20 +57,23 @@ export const CartsSlice = createSlice({
         })
       }
     },
-    addCartProduct:(state,action)=>{
+    addCartProduct: (state, action) => {
 
-   return {
-      ...state,carts:state.carts.map((cart)=>{
-        if (cart.id === action.payload.cartId) {
-          return {
-            ...cart, products: [...cart.products,action.payload.product]
+      return {
+        ...state, carts: state.carts.map((cart) => {
+          if (cart.id === action.payload.cartId) {
+            return {
+              ...cart, products: [...cart.products, action.payload.product]
+            }
           }
+          return cart
         }
-        return cart
+
+        )
       }
-         
-      )
-    }
+    },
+    addNewCart:(state,action)=>{
+    return  {...state,carts:[state.carts,action.payload]}
     }
   },
   extraReducers: {
@@ -88,7 +91,7 @@ export const CartsSlice = createSlice({
 });
 
 export const selectCarts = (state) => state.carts;
-export const selectCartByUserId = (state,id) => state.carts.carts.find((cart) => cart.userId === id);
-export const {increaseProductQuantity,decreaseProductQuantity,deleteСartProduct,addCartProduct } = CartsSlice.actions;
+export const selectCartByUserId = (state, id) => state.carts.carts.find((cart) => cart.userId === id);
+export const { increaseProductQuantity, decreaseProductQuantity, deleteСartProduct, addCartProduct ,addNewCart} = CartsSlice.actions;
 
 export default CartsSlice.reducer;
