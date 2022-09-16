@@ -9,13 +9,15 @@ import { selectTheme } from "../../Redux/userSettings-reducer";
 
 const Header = () => {
   const theme = useSelector(selectTheme);
-  
+
   return (
     <div className={theme}>
       <LogoComponent />
       <NavBarComponent />
-      <ThemeSwitcher />
-      <LanguageSwitcher />
+      <div className="d-flex align-items-center">
+        <ThemeSwitcher />
+        <LanguageSwitcher />
+      </div>
     </div>
   );
 };

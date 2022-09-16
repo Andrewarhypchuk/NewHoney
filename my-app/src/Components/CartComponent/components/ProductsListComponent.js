@@ -4,6 +4,7 @@ import { selectCartByUserId } from "../../../Redux/carts-reducer";
 import CartProductEdit from "./CartProductEdit";
 import CartProductView from './CartProductView';
 import { useSelector } from 'react-redux';
+import DeleteProduct from "./ButtonProductDelete";
 
 const ProductsListComponent = ({ userId }) => {
     const cart = useSelector(state=>selectCartByUserId(state,userId))
@@ -15,7 +16,8 @@ const ProductsListComponent = ({ userId }) => {
 
                 return <div key={product.productId} className="d-flex align-items-center">
                     <CartProductView product={product} />
-                    <CartProductEdit item={product} cartId={cart.id} productId={product.productId} />
+                    <CartProductEdit quantity={product.quantity} cartId={cart.id} productId={product.productId} />
+                    <DeleteProduct cartId={cart.id} productId={product.productId} />
                 </div>
             })
         }
