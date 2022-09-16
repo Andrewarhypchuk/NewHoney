@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 
 import { selectLanguage } from "./../../Redux/userSettings-reducer";
 import translate from "translate";
+import { capitalizeFirstLetter } from './../../Utiles/capitalizeFirstLetter';
 
 translate.engine = "google";
 translate.key = process.env.GOOGLE_KEY;
@@ -19,7 +20,7 @@ const TranslateComponent = ({ str }) => {
     translateText();
   }, [languageSelector, str]);
 
-  return <>{text}</>;
+  return <>{ capitalizeFirstLetter(text)}</>;
 };
 
 export default TranslateComponent;
