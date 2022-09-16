@@ -11,7 +11,6 @@ const LoginComponent = () => {
   useEffect(() => {
     dispatch(setUsers());
     dispatch(setCarts());
-    dispatch(setProducts());
   });
 
   return (

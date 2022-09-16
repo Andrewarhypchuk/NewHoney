@@ -17,11 +17,11 @@ const LogInForm = () => {
 
     const logIn = ({ username, password }) => {
         const logUser = userList.find((user) => user.username === username.trim() && user.password === password.trim())
-        if (logUser !== undefined) {
-            navigate("/profile");
+        if (logUser) {
             dispatch(setName(username));
             dispatch(toggleIsLogged());
             dispatch(setId(logUser.id));
+            navigate("/profile");
         }
     }
 
@@ -34,7 +34,7 @@ const LogInForm = () => {
                     value: 4,
                     message: 'Кількість букв має бути більше 4'
                 }
-            })}  ></input>
+            })}  />
             <div className='error'>{errors?.username && <>{errors?.username?.message || "Error!"}</>}</div>
 
             <label className="label" htmlFor="password">Password</label>
@@ -44,7 +44,7 @@ const LogInForm = () => {
                     value: 6,
                     message: 'Кількість символів має бути більше 6'
                 }
-            })}></input>
+            })} />
             <div className='error'>{errors?.password && <>{errors?.password?.message || "Error!"}</>}</div>
             <ToggleAdminComponent />
             <input className='button btn btn-info' type="submit" value="Log In" />
