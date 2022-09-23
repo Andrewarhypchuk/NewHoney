@@ -19,7 +19,7 @@ const CategoriesList = () => {
     return (
         <Dropdown onSelect={handleSelectedChange}>
             <Dropdown.Toggle className="buttonLanguage languageButton" id="dropdown-basic">
-                <TranslateComponent str="Filter by category" />
+                <TranslateComponent str={activeItem} />
             </Dropdown.Toggle>
             <Dropdown.Menu>
                 <Dropdown.Item
