@@ -15,7 +15,7 @@ const SingleProduct = ({ product }) => {
         <div><TranslateComponent str='ID:' />  {product.id}</div>
         <div> <TranslateComponent str={`Title:  ${product.title}`} /> </div>
         <img className="productImg" src={product.image} alt="product foto" />
-        <div><TranslateComponent str={`Description:  ${product.description}`} /></div>
+        <div className="description"><TranslateComponent str={`Description:  ${product.description}`} /></div>
         <div><TranslateComponent str={`Rate:${product.rating.rate}`} /></div>
         <div><TranslateComponent str={`Price:  ${product.price}$`} /></div>
         {isLogged && <ProductModal productId={product.id} />}

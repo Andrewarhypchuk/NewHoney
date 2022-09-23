@@ -14,7 +14,7 @@ const LanguageSwitcher = () => {
   const language = useSelector(selectLanguage);
   
   return (
-    <div className="d-flex flex-column-reverse">
+    <div className="language_container">
       <Dropdown>
         <Dropdown.Toggle className="buttonLanguage languageButton" id="dropdown-basic">
           <TranslateComponent str={language} />

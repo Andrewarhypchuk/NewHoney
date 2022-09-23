@@ -5,6 +5,7 @@ import Modal from 'react-modal';
 import EditProductModal from './EditProductModal';
 import useModalsInformation from './../../../Utiles/hooks/useModalsInformation';
 import { addCartProduct } from '../../../Redux/carts-reducer';
+import TranslateComponent from '../../TranslateComponent/TranslateComponent';
 
 const ProductModal = ({ productId }) => {
     const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const ProductModal = ({ productId }) => {
     }
 
     return <div>
-        <button className='btn btn-warning' onClick={addProduct}>Add to cart</button>
+        <button className='btn btn-warning' onClick={addProduct}><TranslateComponent str='Add to cart'/></button>
         <Modal
             isOpen={modalIsOpen}
             ariaHideApp={false}

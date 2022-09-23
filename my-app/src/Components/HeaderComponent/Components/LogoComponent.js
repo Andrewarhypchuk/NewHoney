@@ -10,7 +10,7 @@ const LogoComponent = () => {
   const isUserLogged = useSelector(selectLogged);
 
   return (
-    <div className="d-flex flex-column align-items-center">
+    <div className="logo_container">
       <div className="logoPicture"></div>
       <div className="userName">
         {isUserLogged ? capitalizeFirstLetter(name) : null}

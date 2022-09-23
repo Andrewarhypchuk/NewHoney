@@ -54,7 +54,7 @@ export const UsersSlice = createSlice({
 
 export const selectUsers = (state) => state.users;
 export const selectUserById = (state, id) => state.users.users.find((user) => user.id === id);
-export const selectUsersByName = (state) => state.users.searchName !== '' ? state.users.users.filter((user) => user.username === state.users.searchName) : state.users.users
+export const selectUsersByName = (state) => state.users.searchName !== '' ? state.users.users.filter((user) => user.username == state.users.searchName) : state.users.users
 
 export const { deleteUser, editUser, addUser, setSearchName } = UsersSlice.actions;
 

@@ -38,7 +38,7 @@ const LogInForm = () => {
             <div className='error'>{errors?.username && <>{errors?.username?.message || "Error!"}</>}</div>
 
             <label className="label" htmlFor="password">Password</label>
-            <input id='password' className="form-control"   {...register("password", {
+            <input id='password' type='password' className="form-control"   {...register("password", {
                 required: "Поле обов'язковe",
                 minLength: {
                     value: 6,

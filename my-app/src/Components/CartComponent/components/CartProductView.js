@@ -5,6 +5,7 @@ import TranslateComponent from "../../TranslateComponent/TranslateComponent";
 import { useSelector } from 'react-redux';
 
 const CartProductView = ({ product }) => {
+  console.log(product)
   const localProduct = useSelector(state=>selectProductById(state,product.productId));
 
   return (<div className="productView">

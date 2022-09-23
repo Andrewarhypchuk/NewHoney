@@ -20,7 +20,7 @@ const AddUser = () => {
         <Modal.Header closeButton>
           <Modal.Title><TranslateComponent str='You can add a new user' /></Modal.Title>
         </Modal.Header>
-        <Modal.Body><EditUserForm /></Modal.Body>
+        <Modal.Body><EditUserForm handleClose={handleClose} /></Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
           <TranslateComponent str='Close' />

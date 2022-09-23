@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { addUser } from '../../../Redux/users-reducer';
 import { generatedId } from '../../../Utiles/generateId';
 
-const EditUserForm = () => {
+const EditUserForm = ({handleClose}) => {
   const dispatch = useDispatch();
   const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
@@ -15,7 +15,10 @@ const EditUserForm = () => {
 
   return (
     <div>
-      <form className='d-flex flex-column' onSubmit={handleSubmit((user) => dispatch(addUser(user)))}>
+      <form className='d-flex flex-column' onSubmit={handleSubmit((user) =>{
+        handleClose(false)
+        dispatch(addUser(user))
+      })}>
         
         <label className="label" htmlFor="username">Username</label>
         <input id='username' className="form-control"  {...register("username", {

@@ -16,7 +16,7 @@ const User = () => {
     <div className="profileContainer">
       <TranslateComponent str='Profile' />
     <div className="profileView">
-      <TranslateComponent str={`Name: ${user.name.firstname} ${user.name.lastname}`} />
+      <TranslateComponent str={`Name: ${user.username}`} />
       <div><TranslateComponent str='Password: ' />{user.password}</div>
       <div><TranslateComponent str='Email: ' />{user.email}</div>
       <div><TranslateComponent str='City : ' />{capitalizeFirstLetter(user.address.city)}</div>

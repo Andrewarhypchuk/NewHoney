@@ -16,9 +16,9 @@ const EditProductModal = ({ setIsOpen, productId, quantity, cartId }) => {
 
     return <div>
         <div className='d-flex flex-column align-items-center'>
-            <TranslateComponent str='You successfully added this product to Cart!' />
+            <div><TranslateComponent str='You successfully added this product to Cart!' /></div>
             <CartProductEdit quantity={quantity} cartId={cartId} productId={productId} />
-            <div className='d-flex'>
+            <div className='buttons_container'>
                 <div className='btn button btn-danger' onClick={() => setModalDeleteIsOpen(true)} >Delete Product</div>
                 <div className='btn button btn-light' onClick={() => setIsOpen(false)} >Close</div>
             </div>
@@ -32,9 +32,11 @@ const EditProductModal = ({ setIsOpen, productId, quantity, cartId }) => {
         >
             <div className='d-flex flex-column align-items-center'>
                 <TranslateComponent str="Delete Product?" />
-                <div className='d-flex'>
+                <div className='buttons_container'>
                     <DeleteProduct setIsOpen={setIsOpen} cartId={cartId} productId={productId} />
-                    <div className='btn button btn-light' onClick={() => setModalDeleteIsOpen(false)}>Cancel</div>
+                    <div className='btn button btn-light' onClick={() => setModalDeleteIsOpen(false)}>
+                        <TranslateComponent str='Cancel' />
+                        </div>
                 </div>
             </div>
         </Modal>

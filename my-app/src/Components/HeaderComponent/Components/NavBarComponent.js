@@ -7,6 +7,7 @@ import TranslateComponent from "./../../TranslateComponent/TranslateComponent";
 import { resetUserSettings, selectLogged,selectAdmin } from "../../../Redux/userSettings-reducer";
 import { resetUserData } from "../../../Redux/userData-reducer";
 
+
 const NavBarComponent = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -20,12 +21,12 @@ const NavBarComponent = () => {
   }
 
   return (
-    <div className="navbar_container ">
-    <div className="d-flex align-items-center mr-10">
+    <div className="navbar_container">
+    <div  className="d-flex align-items-center mr-10">
       <NavLink to={"profile"}>
         <TranslateComponent str="Profile" />
       </NavLink>
-      {isAdmin && <NavLink to={"users"}>
+      {isLogged && isAdmin &&  <NavLink to={"users"}>
         <TranslateComponent str="Users" />
       </NavLink>}
       <NavLink to={"products"}>
