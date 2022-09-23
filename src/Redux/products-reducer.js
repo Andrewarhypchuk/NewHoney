@@ -44,7 +44,7 @@ export const ProductsSlice = createSlice({
     },
   },
 });
-
+export const selectGetProductsStatus =(state) =>  state.products.status;
 export const selectSortValue = (state) => state.products.sortValue;
 export const selectSearchValue = (state) => state.products.searchValue;
 export const selectCategory = (state) => state.products.category;

@@ -8,8 +8,8 @@ import { FROM_LOW_RATE,FROM_HIGH_RATE } from './../consts';
 
 const useSortProducts = () => {
     const sortValue = useSelector(selectSortValue);
-    const searchValue = useSelector(selectSearchValue);
-    const category = useSelector(selectCategory);
+    // const searchValue = useSelector(selectSearchValue);
+    // const category = useSelector(selectCategory);
     const products = useSelector(selectProductsByFilters);
 
  
