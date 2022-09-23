@@ -2,7 +2,7 @@ import React, { useEffect, useState, useMemo } from "react";
 import useSortProducts from './../../../Utiles/hooks/useSortProducts';
 import SingleProduct from './SingleProduct';
 import { useDispatch } from 'react-redux';
-import { setProducts, selectSortValue, selectGetProductsStatus } from './../../../Redux/products-reducer';
+import { setProducts,selectGetProductsStatus } from './../../../Redux/products-reducer';
 import { useSelector } from 'react-redux';
 
 const PaginatedProducts = () => {
